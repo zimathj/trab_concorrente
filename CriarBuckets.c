@@ -1,27 +1,12 @@
 #include <stdio.h>
 #include <pthread.h>
 #include "bucket_sort.h"
-#include <time.h>
+#include "bucket_sort.c"
 
-const int tamvet = 10;
-const int nbuckets = 3;
-const int nthreads = 2;
+// ACHO Q Ñ PRECISA DE UM INT PARA A ID DO BUCKET EM BUCKET_SORT.C
+// PODEMOS USAR O INDICE DO ARRAY DE BUCKETS 
 
-typedef struct {
-    int bucket_id;  // Acho que é desnecessário, pq podemos usar o indice do array de buckets como ID
-    int min_value;
-    int max_value;
-    int * values;
-}bucket;
-
-int main(int argc, char** argv){
-
-	srand((unsigned)time(NULL));
-	int origin[tamvet];
-	for (int i = 0; i < tamvet; i++)
-		origin[i] = rand() % tamvet;
-	for (int i = 0; i < tamvet; i++)
-		printf("origin[%d] = %d \n", i, origin[i]);	
+bucket[] CriarBuckets(int tamvet, int nbuckets){
 
 	bucket buckets[nbuckets];
 	int resto = tamvet%nbuckets;
@@ -38,18 +23,15 @@ int main(int argc, char** argv){
 		}
 		for (int i = resto; i < nbuckets; i++) {
 			buckets[i]->values = malloc(sizeof(int) * (qtdBucket));
-			buckets[i]->min_value = qtdBucket * i;
-			buckets[i]->max_value = min_value + qtdBucket;
+			buckets[i]->min_value = (qtdBucket * i)+(i*1);  // correcao
+			buckets[i]->max_value = (min_value + qtdBucket)-1;  // correcao
 		} 
 	} else {
 		for (int i = 0; i < nbuckets; i++) {
 			buckets[i]->values = malloc(sizeof(int) * (qtdBucket));
 			buckets[i]->min_value = qtdBucket * i;
-			buckets[i]->max_value = min_value + qtdBucket;
+			buckets[i]->max_value = (min_value + qtdBucket)-1;  // correcao
 		}
 	}
-
-	
-	
-
+	return buckets[];
 }

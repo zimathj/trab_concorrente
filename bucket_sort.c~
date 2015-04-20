@@ -20,9 +20,7 @@ int main(int argc, char** argv){
 	int origin[tamvet];
 	for (int i = 0; i < tamvet; i++)
 		origin[i] = rand() % tamvet;
-	for (int i = 0; i < tamvet; i++)
-		printf("origin[%d] = %d \n", i, origin[i]);	
-
+	
 	bucket buckets[nbuckets];
 	int resto = tamvet%nbuckets;
 	int qtdBucket = tamvet/nbuckets;
