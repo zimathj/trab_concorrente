@@ -8,14 +8,12 @@ bucket baldes[];
 int* thread()
 {
     
-	int a;
     
     while (index < nbuckets) {
         // pthread
-        a = index;
+        bubble_sort(baldes[index].valores, tamvet);
         index++;
         // pthread
-	bubble_sort(baldes[a].valores, tamvet);
     }
 }
 
