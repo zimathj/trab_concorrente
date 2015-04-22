@@ -18,19 +18,19 @@ bucket[] CriarBuckets(int tamvet, int nbuckets){
 		for (int i = 1; i < resto; i++) {
 				buckets[i]->values = malloc(sizeof(int) * (qtdBucket+1));
 				buckets[i]->min_value = (qtdBucket * i)+(i*1);
-				buckets[i]->max_value = min_value+qtdBucket;
+				buckets[i]->max_value = buckets[i]->min_value+qtdBucket;
 			}		
 		}
 		for (int i = resto; i < nbuckets; i++) {
 			buckets[i]->values = malloc(sizeof(int) * (qtdBucket));
 			buckets[i]->min_value = (qtdBucket * i)+(i*1);  // correcao
-			buckets[i]->max_value = (min_value + qtdBucket)-1;  // correcao
+			buckets[i]->max_value = (buckets[i]->min_value + qtdBucket)-1;  // correcao
 		} 
 	} else {
 		for (int i = 0; i < nbuckets; i++) {
 			buckets[i]->values = malloc(sizeof(int) * (qtdBucket));
 			buckets[i]->min_value = qtdBucket * i;
-			buckets[i]->max_value = (min_value + qtdBucket)-1;  // correcao
+			buckets[i]->max_value = (buckets[i]->min_value + qtdBucket)-1;  // correcao
 		}
 	}
 	return buckets[];
